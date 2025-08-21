@@ -1,32 +1,32 @@
 import { useState } from "react";
 
-function PersonalInfo() {
+function EducationInfo() {
   return (
     <>
-      <h2>Personal Infromation</h2>
-      <form className="personal-info">
+      <h2>Education</h2>
+      <form className="education-info">
         <div className="input-section">
-          <label className="personal-input-label">
-            Name:
-            <input type="name" id="name" name="name" required />
+          <label className="experience-input-label">
+            Institution:
+            <input type="text" id="school-name" required />
           </label>
         </div>
         <div className="input-section">
-          <label className="personal-input-label">
-            Email:
-            <input type="email" id="email" name="email" required />
+          <label className="experience-input-label">
+            Degree:
+            <input type="text" id="degree" required />
           </label>
         </div>
         <div className="input-section">
-          <label className="personal-input-label">
-            Phone:
-            <input type="number" id="phone" name="phone" required />
+          <label className="experience-input-label">
+            Years at Institution:
+            <input type="number" id="date" required />
           </label>
         </div>
         <div className="input-section">
-          <label className="personal-input-label">
-            Address:
-            <input type="name" id="address" name="address" required />
+          <label className="experience-input-label">
+            Location:
+            <input type="text" id="location" required />
           </label>
         </div>
         <div className="buttons">
@@ -45,4 +45,4 @@ function PersonalInfo() {
   );
 }
 
-export default PersonalInfo;
+export default EducationInfo;
