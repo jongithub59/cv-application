@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function EducationInfo() {
   return (
-    <>
+    <div className="ed-form">
       <h2>Education</h2>
       <form className="education-info">
         <div className="input-section">
@@ -47,7 +47,7 @@ function EducationInfo() {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 

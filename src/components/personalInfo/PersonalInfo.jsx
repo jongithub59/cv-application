@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function PersonalInfo() {
   return (
-    <>
+    <div className="personal-form">
       <h2>Personal Infromation</h2>
       <form className="personal-info">
         <div className="input-section">
@@ -41,7 +41,7 @@ function PersonalInfo() {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 

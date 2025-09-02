@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function ExperienceInfo() {
   return (
-    <>
+    <div className="exp-form">
       <h2>Prior Experience</h2>
       <form className="experience-info">
         <div className="input-section">
@@ -53,7 +53,7 @@ function ExperienceInfo() {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 
