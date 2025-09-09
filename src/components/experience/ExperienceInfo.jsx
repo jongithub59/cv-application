@@ -36,7 +36,7 @@ function ExperienceInfo() {
           </label>
         </div>
         <div className="input-section">
-          <label for="description" className="experience-input-label">
+          <label className="experience-input-label">
             Description:
             <textarea id="description" required />
           </label>

@@ -1,14 +1,14 @@
-function Resume() {
+function Resume(personalInfo, educationInfo, experienceInfo) {
   return (
     <div className="resume-container">
       <div className="resume-header">
         <div className="resume-name">
-          <h2>Joe Hawthorne</h2>
+          <h2>{personalInfo.name}</h2>
         </div>
         <div className="resume-contact-info">
-          <div className="resume-email">joeh@gmail.com</div>
-          <div className="resume-phone">913-784-495</div>
-          <div className="resume-address">Lexington, Kentucky</div>
+          <div className="resume-email">{personalInfo.email}</div>
+          <div className="resume-phone">{personalInfo.phone}</div>
+          <div className="resume-address">{personalInfo.address}</div>
         </div>
       </div>
       <div className="resume-education-section resume-section">
@@ -39,7 +39,7 @@ function Resume() {
             </div>
             <div className="resume-exp-postiton">Senior Supervisor</div>
             <div className="resume-exp-desc">
-              Manage large teams to efficiently achieve the company;s goals
+              Manage large teams to efficiently achieve the company's goals
             </div>
           </div>
         </div>
