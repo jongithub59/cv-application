@@ -21,11 +21,11 @@ function ExperienceInfo() {
           <div className="date-inputs">
             <label className="experience-input-label date-label">
               Start Date:
-              <input type="date" id="date" required />
+              <input type="text" id="date" required />
             </label>
             <label className="experience-input-label date-label">
               End Date:
-              <input type="date" id="date" required />
+              <input type="text" id="date" required />
             </label>
           </div>
         </div>
