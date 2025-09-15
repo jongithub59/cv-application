@@ -35,17 +35,21 @@ function Resume(props) {
         <h3 className="section-header">Prior Experience</h3>
         <div className="resume-experience">
           <div className="resume-exp-group">
-            <div className="resume-exp-date">10/2022 - present</div>
-            <div className="resume-exp-location">Lexington, Kentucky</div>
+            <div className="resume-exp-date">
+              {props.experienceInfo.startDate} - {props.experienceInfo.endDate}
+            </div>
+            <div className="resume-exp-location">
+              {props.experienceInfo.location}
+            </div>
           </div>
           <div className="resume-exp-group">
             <div className="resume-company-name">
-              <strong>Kentucky Co.</strong>
+              <strong>{props.experienceInfo.company}</strong>
             </div>
-            <div className="resume-exp-postiton">Senior Supervisor</div>
-            <div className="resume-exp-desc">
-              Manage large teams to efficiently achieve the company's goals
+            <div className="resume-exp-postiton">
+              {props.experienceInfo.position}
             </div>
+            <div className="resume-exp-desc">{props.experienceInfo.desc}</div>
           </div>
         </div>
       </div>

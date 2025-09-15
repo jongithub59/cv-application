@@ -28,7 +28,7 @@ function App() {
       startDate: "10/2022",
       endDate: "present",
       location: "Lexington, Kentucky",
-      desc: "overseeing daily operations, managing and developing a team of employees, communicating performance feedback and company objectives, ensuring compliance with policies and procedures, and serving as a liaison between staff and upper management to achieve organizational goals.",
+      desc: "Oversee daily operations, managing and developing a team of employees, communicating performance feedback and company objectives, ensuring compliance with policies and procedures, and serving as a liaison between staff and upper management to achieve organizational goals.",
     },
   };
 
@@ -53,7 +53,7 @@ function App() {
   };
 
   const handleExperienceInfoSave = (experienceInfo) => {
-    setEducationInfo(experienceInfoInfo);
+    setExperienceInfo(experienceInfo);
     console.log(experienceInfo);
   };
 
@@ -78,7 +78,7 @@ function App() {
       <Resume // pass the three hooks to be grouped in Resume.jsx as named props
         personalInfo={personalInfo}
         educationInfo={educationInfo}
-        experience={experienceInfo}
+        experienceInfo={experienceInfo}
       ></Resume>
     </div>
   );
