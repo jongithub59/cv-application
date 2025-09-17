@@ -132,6 +132,10 @@ form {
   justify-content: space-between;
 }
 
+input {
+  padding: 4px;
+}
+
 label,
 input {
   display: flex;
@@ -139,7 +143,6 @@ input {
   flex-direction: column;
   width: 100%;
   min-height: 24px;
-  padding: 2px;
 }
 
 .date-label {
@@ -155,6 +158,8 @@ input {
 
 textarea {
   width: 100%;
+  min-height: 100px;
+  padding: 4px;
 }
 
 .buttons {

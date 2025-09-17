@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-function PersonalInfo({ onClickSave, onClickCancel }) {
+function PersonalInfo({ onClickSave, onClickCancel, personalInfo }) {
   //hooks to track what is inputted into each box
-  const [nameValue, setNameValue] = useState("");
-  const [emailValue, setEmailValue] = useState("");
-  const [phoneValue, setPhoneValue] = useState("");
-  const [addressValue, setAddressValue] = useState("");
+  const [nameValue, setNameValue] = useState(personalInfo.name);
+  const [emailValue, setEmailValue] = useState(personalInfo.email);
+  const [phoneValue, setPhoneValue] = useState(personalInfo.phone);
+  const [addressValue, setAddressValue] = useState(personalInfo.address);
 
   // put all data into an object when save is clicked for use in App.jsx and Resume.jsx through the props function
   function handleSaveClick() {
@@ -52,7 +52,7 @@ function PersonalInfo({ onClickSave, onClickCancel }) {
           <label className="personal-input-label">
             Phone:
             <input
-              type="number"
+              type="phone"
               value={phoneValue}
               onChange={(event) => setPhoneValue(event.target.value)}
               id="phone"

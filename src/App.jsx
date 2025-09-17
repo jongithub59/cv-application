@@ -12,7 +12,7 @@ function App() {
     personalInfo: {
       name: "Joe Hawthorne",
       email: "joeh@gmail.com",
-      phone: "913-784-4959",
+      phone: "(913)-784-4959",
       address: "Lexington, Kentucky",
     },
     educationInfo: {
@@ -23,7 +23,7 @@ function App() {
       location: "Frankfort, Kentucky",
     },
     experienceInfo: {
-      company: "Kentuck Co.",
+      company: "Kentucky Co.",
       position: "Senior Supervisor",
       startDate: "10/2022",
       endDate: "present",
@@ -63,16 +63,19 @@ function App() {
         <PersonalInfo
           onClickCancel={() => console.log("cancel")}
           onClickSave={(personalInfo) => handlePersonalInfoSave(personalInfo)} // pass function to grab personal data from user
+          personalInfo={personalInfo} // pass example info to display in input element as placeholder
         ></PersonalInfo>
         <EducationInfo
           onClickSave={(educationInfo) =>
             handleEducationInfoSave(educationInfo)
           }
+          educationInfo={educationInfo}
         ></EducationInfo>
         <ExperienceInfo
           onClickSave={(experienceInfo) =>
             handleExperienceInfoSave(experienceInfo)
           }
+          experienceInfo={experienceInfo}
         ></ExperienceInfo>
       </DisplayForms>
       <Resume // pass the three hooks to be grouped in Resume.jsx as named props

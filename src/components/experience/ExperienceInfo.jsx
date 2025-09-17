@@ -1,12 +1,14 @@
 import { useState } from "react";
 
-function ExperienceInfo({ onClickSave }) {
-  const [companyValue, setCompanyValue] = useState("");
-  const [positonValue, setPositionValue] = useState("");
-  const [startDateValue, setStartDateValue] = useState("");
-  const [endDateValue, setEndDateValue] = useState("");
-  const [locationValue, setLocationValue] = useState("");
-  const [descValue, setDescValue] = useState("");
+function ExperienceInfo({ onClickSave, experienceInfo }) {
+  const [companyValue, setCompanyValue] = useState(experienceInfo.company);
+  const [positonValue, setPositionValue] = useState(experienceInfo.position);
+  const [startDateValue, setStartDateValue] = useState(
+    experienceInfo.startDate
+  );
+  const [endDateValue, setEndDateValue] = useState(experienceInfo.endDate);
+  const [locationValue, setLocationValue] = useState(experienceInfo.location);
+  const [descValue, setDescValue] = useState(experienceInfo.desc);
 
   function handleSaveClick() {
     const experienceInfo = {

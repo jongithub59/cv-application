@@ -1,11 +1,13 @@
 import { useState } from "react";
 
-function EducationInfo({ onClickSave }) {
-  const [institutionValue, setInstitutionValue] = useState("");
-  const [degreeValue, setDegreeValue] = useState("");
-  const [startDateValue, setStartDateValue] = useState("");
-  const [endDateValue, setEndDateValue] = useState("");
-  const [locationValue, setLocationValue] = useState("");
+function EducationInfo({ onClickSave, educationInfo }) {
+  const [institutionValue, setInstitutionValue] = useState(
+    educationInfo.institution
+  );
+  const [degreeValue, setDegreeValue] = useState(educationInfo.degree);
+  const [startDateValue, setStartDateValue] = useState(educationInfo.startDate);
+  const [endDateValue, setEndDateValue] = useState(educationInfo.endDate);
+  const [locationValue, setLocationValue] = useState(educationInfo.location);
 
   function handleSaveClick() {
     const educationInfo = {
