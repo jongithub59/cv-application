@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function PersonalInfo({ onClickSave, onClickCancel, personalInfo }) {
+function PersonalInfo({ onClickSave, onClickDelete, personalInfo }) {
   //hooks to track what is inputted into each box
   const [nameValue, setNameValue] = useState(personalInfo.name);
   const [emailValue, setEmailValue] = useState(personalInfo.email);
@@ -16,6 +16,15 @@ function PersonalInfo({ onClickSave, onClickCancel, personalInfo }) {
       address: addressValue,
     };
     onClickSave(personalInfo);
+  }
+
+  // set hooks to empty string and tell App.jsx to do the same
+  function handleDelete() {
+    setNameValue("");
+    setEmailValue("");
+    setPhoneValue("");
+    setAddressValue("");
+    onClickDelete();
   }
 
   return (
@@ -75,8 +84,8 @@ function PersonalInfo({ onClickSave, onClickCancel, personalInfo }) {
           </label>
         </div>
         <div className="buttons">
-          <button onClick={onClickCancel} className="cancel" type="button">
-            Cancel
+          <button onClick={handleDelete} className="delete" type="button">
+            Delete
           </button>
           <button onClick={handleSaveClick} className="save" type="button">
             Save

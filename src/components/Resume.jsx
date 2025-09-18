@@ -1,7 +1,6 @@
 function Resume(props) {
   return (
     <div className="resume-container">
-      {console.log(props)}
       <div className="resume-header">
         <div className="resume-name">
           <h2>{props.personalInfo.name}</h2>

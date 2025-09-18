@@ -44,7 +44,12 @@ function App() {
   //brings in personalInfo object from PersonalInfo.jsx and updates state variable
   const handlePersonalInfoSave = (personalInfo) => {
     setPersonalInfo(personalInfo);
-    console.log(personalInfo);
+    // console.log(personalInfo);
+  };
+
+  // update hooks to be empty after delete is clicked which will also updat the resume content
+  const handlePersonalInfoDelete = () => {
+    setPersonalInfo("");
   };
 
   const handleEducationInfoSave = (educationInfo) => {
@@ -61,8 +66,8 @@ function App() {
     <div className="app">
       <DisplayForms>
         <PersonalInfo
-          onClickCancel={() => console.log("cancel")}
           onClickSave={(personalInfo) => handlePersonalInfoSave(personalInfo)} // pass function to grab personal data from user
+          onClickDelete={handlePersonalInfoDelete} // run when delete is clicked in PersonalInfo,jsx
           personalInfo={personalInfo} // pass example info to display in input element as placeholder
         ></PersonalInfo>
         <EducationInfo
