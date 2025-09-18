@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-function ExperienceInfo({ onClickSave, experienceInfo }) {
+function ExperienceInfo({ onClickSave, onClickDelete, experienceInfo }) {
   const [companyValue, setCompanyValue] = useState(experienceInfo.company);
-  const [positonValue, setPositionValue] = useState(experienceInfo.position);
+  const [positionValue, setPositionValue] = useState(experienceInfo.position);
   const [startDateValue, setStartDateValue] = useState(
     experienceInfo.startDate
   );
@@ -13,13 +13,23 @@ function ExperienceInfo({ onClickSave, experienceInfo }) {
   function handleSaveClick() {
     const experienceInfo = {
       company: companyValue,
-      position: positonValue,
+      position: positionValue,
       startDate: startDateValue,
       endDate: endDateValue,
       location: locationValue,
       desc: descValue,
     };
     onClickSave(experienceInfo);
+  }
+
+  function handleDelete() {
+    setCompanyValue("");
+    setPositionValue("");
+    setStartDateValue("");
+    setEndDateValue("");
+    setLocationValue("");
+    setDescValue("");
+    onClickDelete();
   }
 
   return (
@@ -44,7 +54,7 @@ function ExperienceInfo({ onClickSave, experienceInfo }) {
             <input
               type="text"
               id="position"
-              value={positonValue}
+              value={positionValue}
               onChange={(event) => setPositionValue(event.target.value)}
               required
             />
@@ -98,11 +108,8 @@ function ExperienceInfo({ onClickSave, experienceInfo }) {
           </label>
         </div>
         <div className="buttons">
-          <button className="delete" type="button">
+          <button onClick={handleDelete} className="delete" type="button">
             Delete
-          </button>
-          <button className="cancel" type="button">
-            Cancel
           </button>
           <button onClick={handleSaveClick} className="save" type="button">
             Save

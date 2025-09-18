@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function EducationInfo({ onClickSave, educationInfo }) {
+function EducationInfo({ onClickSave, onClickDelete, educationInfo }) {
   const [institutionValue, setInstitutionValue] = useState(
     educationInfo.institution
   );
@@ -18,6 +18,15 @@ function EducationInfo({ onClickSave, educationInfo }) {
       location: locationValue,
     };
     onClickSave(educationInfo);
+  }
+
+  function handleDelete() {
+    setInstitutionValue("");
+    setDegreeValue("");
+    setStartDateValue("");
+    setEndDateValue("");
+    setLocationValue("");
+    onClickDelete();
   }
 
   return (
@@ -85,11 +94,8 @@ function EducationInfo({ onClickSave, educationInfo }) {
           </label>
         </div>
         <div className="buttons">
-          <button className="delete" type="button">
+          <button onClick={handleDelete} className="delete" type="button">
             Delete
-          </button>
-          <button className="cancel" type="button">
-            Cancel
           </button>
           <button onClick={handleSaveClick} className="save" type="button">
             Save

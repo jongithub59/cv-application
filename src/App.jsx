@@ -62,6 +62,14 @@ function App() {
     console.log(experienceInfo);
   };
 
+  const handleEducationInfoDelete = () => {
+    setEducationInfo("");
+  };
+
+  const handleExperienceInfoDelete = () => {
+    setExperienceInfo("");
+  };
+
   return (
     <div className="app">
       <DisplayForms>
@@ -74,12 +82,14 @@ function App() {
           onClickSave={(educationInfo) =>
             handleEducationInfoSave(educationInfo)
           }
+          onClickDelete={handleEducationInfoDelete}
           educationInfo={educationInfo}
         ></EducationInfo>
         <ExperienceInfo
           onClickSave={(experienceInfo) =>
             handleExperienceInfoSave(experienceInfo)
           }
+          onClickDelete={handleExperienceInfoDelete}
           experienceInfo={experienceInfo}
         ></ExperienceInfo>
       </DisplayForms>
