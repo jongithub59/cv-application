@@ -12,7 +12,10 @@ function Resume(props) {
         </div>
       </div>
       <div className="resume-education-section resume-section">
-        <h3 className="section-header">Education</h3>
+        {/* conditional header that will disappear if there is no content form the education section to display */}
+        {props.educationInfo !== "" && (
+          <h3 className="section-header">Education</h3>
+        )}
         <div className="resume-education">
           <div className="resume-edu-group">
             <div className="resume-edu-date">
@@ -31,7 +34,9 @@ function Resume(props) {
         </div>
       </div>
       <div className="resume-experience-section resume-section">
-        <h3 className="section-header">Prior Experience</h3>
+        {props.experienceInfo !== "" && (
+          <h3 className="section-header">Prior Experience</h3>
+        )}
         <div className="resume-experience">
           <div className="resume-exp-group">
             <div className="resume-exp-date">

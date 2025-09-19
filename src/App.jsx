@@ -47,11 +47,6 @@ function App() {
     // console.log(personalInfo);
   };
 
-  // update hooks to be empty after delete is clicked which will also updat the resume content
-  const handlePersonalInfoDelete = () => {
-    setPersonalInfo("");
-  };
-
   const handleEducationInfoSave = (educationInfo) => {
     setEducationInfo(educationInfo);
     console.log(educationInfo);
@@ -60,6 +55,11 @@ function App() {
   const handleExperienceInfoSave = (experienceInfo) => {
     setExperienceInfo(experienceInfo);
     console.log(experienceInfo);
+  };
+
+  // update hooks to be empty after delete is clicked which will also updat the resume content
+  const handlePersonalInfoDelete = () => {
+    setPersonalInfo("");
   };
 
   const handleEducationInfoDelete = () => {
