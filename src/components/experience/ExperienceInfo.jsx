@@ -11,6 +11,16 @@ function ExperienceInfo({ onClickSave, onClickDelete, experienceInfo }) {
   const [descValue, setDescValue] = useState(experienceInfo.desc);
 
   function handleSaveClick() {
+    if (
+      companyValue == "" &&
+      positionValue == "" &&
+      startDateValue == "" &&
+      endDateValue == "" &&
+      locationValue == "" &&
+      descValue == ""
+    ) {
+      return;
+    }
     const experienceInfo = {
       company: companyValue,
       position: positionValue,

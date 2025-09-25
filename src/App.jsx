@@ -35,7 +35,10 @@ function App() {
   // hook for personal details object that will update everytime "save" is clicked
   const [personalInfo, setPersonalInfo] = useState(resumeData.personalInfo);
 
-  const [educationInfo, setEducationInfo] = useState(resumeData.educationInfo);
+  // hook now uses an array to store the forms that may be used later
+  const [educationInfo, setEducationInfo] = useState([
+    resumeData.educationInfo,
+  ]);
 
   const [experienceInfo, setExperienceInfo] = useState(
     resumeData.experienceInfo
@@ -44,11 +47,13 @@ function App() {
   //brings in personalInfo object from PersonalInfo.jsx and updates state variable
   const handlePersonalInfoSave = (personalInfo) => {
     setPersonalInfo(personalInfo);
-    // console.log(personalInfo);
   };
 
-  const handleEducationInfoSave = (educationInfo) => {
-    setEducationInfo(educationInfo);
+  // find the form that needs to be updated using index, then create new array with that form updated
+  const handleEducationInfoSave = (index, updatedEducation) => {
+    setEducationInfo((prev) =>
+      prev.map((edu, i) => (i === index ? updatedEducation : edu))
+    );
     console.log(educationInfo);
   };
 
@@ -62,13 +67,26 @@ function App() {
     setPersonalInfo("");
   };
 
-  const handleEducationInfoDelete = () => {
-    setEducationInfo("");
+  // search through current array and find the array to be deleted by the index, then make new array without it
+  const handleEducationInfoDelete = (index) => {
+    // prevent deleting if one form exists
+    if (educationInfo.length == 1) {
+      return;
+    }
+    setEducationInfo((prev) => prev.filter((_, i) => i !== index));
   };
 
   const handleExperienceInfoDelete = () => {
     setExperienceInfo("");
   };
+
+  // create a new EducationInfo by taking the current one and setting its props to be empty
+  function addNewEducationForm() {
+    setEducationInfo((prev) => [
+      ...prev,
+      { institution: "", degree: "", startDate: "", endDate: "", location: "" },
+    ]);
+  }
 
   return (
     <div className="app">
@@ -78,13 +96,18 @@ function App() {
           onClickDelete={handlePersonalInfoDelete} // run when delete is clicked in PersonalInfo,jsx
           personalInfo={personalInfo} // pass example info to display in input element as placeholder
         ></PersonalInfo>
-        <EducationInfo
-          onClickSave={(educationInfo) =>
-            handleEducationInfoSave(educationInfo)
-          }
-          onClickDelete={handleEducationInfoDelete}
-          educationInfo={educationInfo}
-        ></EducationInfo>
+        {/* now uses the array of forms to render education form content */}
+        {educationInfo.map((edu, index) => (
+          <EducationInfo
+            key={index}
+            onClickSave={(educationInfo) =>
+              handleEducationInfoSave(index, educationInfo)
+            }
+            onClickDelete={() => handleEducationInfoDelete(index)}
+            educationInfo={edu}
+            addNewForm={addNewEducationForm}
+          ></EducationInfo>
+        ))}
         <ExperienceInfo
           onClickSave={(experienceInfo) =>
             handleExperienceInfoSave(experienceInfo)

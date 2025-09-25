@@ -1,6 +1,7 @@
 function Resume(props) {
   return (
     <div className="resume-container">
+      {console.log(props.educationInfo[0])}
       <div className="resume-header">
         <div className="resume-name">
           <h2>{props.personalInfo.name}</h2>
@@ -12,26 +13,32 @@ function Resume(props) {
         </div>
       </div>
       <div className="resume-education-section resume-section">
-        {/* conditional header that will disappear if there is no content form the education section to display */}
-        {props.educationInfo !== "" && (
-          <h3 className="section-header">Education</h3>
-        )}
-        <div className="resume-education">
-          <div className="resume-edu-group">
-            <div className="resume-edu-date">
-              {props.educationInfo.startDate} - {props.educationInfo.endDate}
+        {/* conditional header that will disappear if there is no content from the education section to display */}
+        {!(
+          props.educationInfo[0].institution === "" &&
+          props.educationInfo[0].degree === "" &&
+          props.educationInfo[0].startDate === "" &&
+          props.educationInfo[0].endDate === "" &&
+          props.educationInfo[0].location === ""
+        ) && <h3 className="section-header">Education</h3>}
+        {props.educationInfo.map((edu, i) => (
+          <div key={i} className="resume-education">
+            <div className="resume-edu-group">
+              <div className="resume-edu-date">
+                {edu.startDate}
+                {edu.startDate && edu.endDate && <span> - </span>}
+                {edu.endDate}
+              </div>
+              <div className="resume-edu-location">{edu.location}</div>
             </div>
-            <div className="resume-edu-location">
-              {props.educationInfo.location}
+            <div className="resume-edu-group">
+              <div className="resume-school">
+                <strong>{edu.institution}</strong>
+              </div>
+              <div className="resume-degree">{edu.degree}</div>
             </div>
           </div>
-          <div className="resume-edu-group">
-            <div className="resume-school">
-              <strong>{props.educationInfo.institution}</strong>
-            </div>
-            <div className="resume-degree">{props.educationInfo.degree}</div>
-          </div>
-        </div>
+        ))}
       </div>
       <div className="resume-experience-section resume-section">
         {props.experienceInfo !== "" && (
@@ -40,7 +47,10 @@ function Resume(props) {
         <div className="resume-experience">
           <div className="resume-exp-group">
             <div className="resume-exp-date">
-              {props.experienceInfo.startDate} - {props.experienceInfo.endDate}
+              {props.experienceInfo.startDate}
+              {props.experienceInfo.startDate &&
+                props.experienceInfo.endDate && <span> - </span>}
+              {props.experienceInfo.endDate}
             </div>
             <div className="resume-exp-location">
               {props.experienceInfo.location}
