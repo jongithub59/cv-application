@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-function ExperienceInfo({ onClickSave, onClickDelete, experienceInfo }) {
+function ExperienceInfo({
+  onClickSave,
+  onClickDelete,
+  experienceInfo,
+  addNewForm,
+}) {
   const [companyValue, setCompanyValue] = useState(experienceInfo.company);
   const [positionValue, setPositionValue] = useState(experienceInfo.position);
   const [startDateValue, setStartDateValue] = useState(
@@ -11,16 +16,6 @@ function ExperienceInfo({ onClickSave, onClickDelete, experienceInfo }) {
   const [descValue, setDescValue] = useState(experienceInfo.desc);
 
   function handleSaveClick() {
-    if (
-      companyValue == "" &&
-      positionValue == "" &&
-      startDateValue == "" &&
-      endDateValue == "" &&
-      locationValue == "" &&
-      descValue == ""
-    ) {
-      return;
-    }
     const experienceInfo = {
       company: companyValue,
       position: positionValue,
@@ -40,6 +35,10 @@ function ExperienceInfo({ onClickSave, onClickDelete, experienceInfo }) {
     setLocationValue("");
     setDescValue("");
     onClickDelete();
+  }
+
+  function handleAddNew() {
+    addNewForm();
   }
 
   return (
@@ -120,6 +119,9 @@ function ExperienceInfo({ onClickSave, onClickDelete, experienceInfo }) {
         <div className="buttons">
           <button onClick={handleDelete} className="delete" type="button">
             Delete
+          </button>
+          <button onClick={handleAddNew} className="add-new" type="button">
+            + Experience
           </button>
           <button onClick={handleSaveClick} className="save" type="button">
             Save

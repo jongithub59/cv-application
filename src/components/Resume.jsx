@@ -44,28 +44,25 @@ function Resume(props) {
         {props.experienceInfo !== "" && (
           <h3 className="section-header">Prior Experience</h3>
         )}
-        <div className="resume-experience">
-          <div className="resume-exp-group">
-            <div className="resume-exp-date">
-              {props.experienceInfo.startDate}
-              {props.experienceInfo.startDate &&
-                props.experienceInfo.endDate && <span> - </span>}
-              {props.experienceInfo.endDate}
+        {props.experienceInfo.map((exp, i) => (
+          <div key={i} className="resume-experience">
+            <div className="resume-exp-group">
+              <div className="resume-exp-date">
+                {exp.startDate}
+                {exp.startDate && exp.endDate && <span> - </span>}
+                {exp.endDate}
+              </div>
+              <div className="resume-exp-location">{exp.location}</div>
             </div>
-            <div className="resume-exp-location">
-              {props.experienceInfo.location}
+            <div className="resume-exp-group">
+              <div className="resume-company-name">
+                <strong>{exp.company}</strong>
+              </div>
+              <div className="resume-exp-postiton">{exp.position}</div>
+              <div className="resume-exp-desc">{exp.desc}</div>
             </div>
           </div>
-          <div className="resume-exp-group">
-            <div className="resume-company-name">
-              <strong>{props.experienceInfo.company}</strong>
-            </div>
-            <div className="resume-exp-postiton">
-              {props.experienceInfo.position}
-            </div>
-            <div className="resume-exp-desc">{props.experienceInfo.desc}</div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

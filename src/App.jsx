@@ -40,9 +40,9 @@ function App() {
     resumeData.educationInfo,
   ]);
 
-  const [experienceInfo, setExperienceInfo] = useState(
-    resumeData.experienceInfo
-  );
+  const [experienceInfo, setExperienceInfo] = useState([
+    resumeData.experienceInfo,
+  ]);
 
   //brings in personalInfo object from PersonalInfo.jsx and updates state variable
   const handlePersonalInfoSave = (personalInfo) => {
@@ -54,12 +54,12 @@ function App() {
     setEducationInfo((prev) =>
       prev.map((edu, i) => (i === index ? updatedEducation : edu))
     );
-    console.log(educationInfo);
   };
 
-  const handleExperienceInfoSave = (experienceInfo) => {
-    setExperienceInfo(experienceInfo);
-    console.log(experienceInfo);
+  const handleExperienceInfoSave = (index, updatedExperience) => {
+    setExperienceInfo((prev) =>
+      prev.map((exp, i) => (i === index ? updatedExperience : exp))
+    );
   };
 
   // update hooks to be empty after delete is clicked which will also updat the resume content
@@ -76,8 +76,11 @@ function App() {
     setEducationInfo((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const handleExperienceInfoDelete = () => {
-    setExperienceInfo("");
+  const handleExperienceInfoDelete = (index) => {
+    if (experienceInfo.length == 1) {
+      return;
+    }
+    setExperienceInfo((prev) => prev.filter((_, i) => i !== index));
   };
 
   // create a new EducationInfo by taking the current one and setting its props to be empty
@@ -85,6 +88,20 @@ function App() {
     setEducationInfo((prev) => [
       ...prev,
       { institution: "", degree: "", startDate: "", endDate: "", location: "" },
+    ]);
+  }
+
+  function addNewExperienceForm() {
+    setExperienceInfo((prev) => [
+      ...prev,
+      {
+        company: "",
+        position: "",
+        startDate: "",
+        endDate: "",
+        location: "",
+        desc: "",
+      },
     ]);
   }
 
@@ -108,13 +125,17 @@ function App() {
             addNewForm={addNewEducationForm}
           ></EducationInfo>
         ))}
-        <ExperienceInfo
-          onClickSave={(experienceInfo) =>
-            handleExperienceInfoSave(experienceInfo)
-          }
-          onClickDelete={handleExperienceInfoDelete}
-          experienceInfo={experienceInfo}
-        ></ExperienceInfo>
+        {experienceInfo.map((exp, index) => (
+          <ExperienceInfo
+            key={index}
+            onClickSave={(experienceInfo) =>
+              handleExperienceInfoSave(index, experienceInfo)
+            }
+            onClickDelete={() => handleExperienceInfoDelete(index)}
+            experienceInfo={exp}
+            addNewForm={addNewExperienceForm}
+          ></ExperienceInfo>
+        ))}
       </DisplayForms>
       <Resume // pass the three hooks to be grouped in Resume.jsx as named props
         personalInfo={personalInfo}

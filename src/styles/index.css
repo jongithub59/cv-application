@@ -105,12 +105,17 @@ a:hover {
 
 .resume-experience {
   display: flex;
+  margin: 5px 0;
   gap: 24px;
 }
 
 .resume-exp-group,
 .resume-edu-group {
   min-width: 140px;
+}
+
+.resume-exp-desc {
+  word-wrap: break-word;
 }
 
 h1 {

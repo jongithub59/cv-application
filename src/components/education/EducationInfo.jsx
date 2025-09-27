@@ -107,7 +107,7 @@ function EducationInfo({
             Delete
           </button>
           <button onClick={handleAddNew} className="add-new" type="button">
-            Add New
+            + Education
           </button>
           <button onClick={handleSaveClick} className="save" type="button">
             Save
